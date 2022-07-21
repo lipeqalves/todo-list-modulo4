@@ -14,7 +14,6 @@ class Usuarios{
             res.status(200).json(email)
         })
 
-
         app.post("/usuarios",(req, res) => {
             const isValid = ValidacoesService.validaNome(req.body.nome)
            
@@ -25,6 +24,11 @@ class Usuarios{
             }else{
              res.status(400).send("Erro")
             }
+
+        app.delete("/usuario/:id", (req, res) => {
+            const usuario = DatabaseMetodos.detaUsuarioPorId(req.params.index)
+            res.status(200).json(usuario)
+        })     
         })
     }
 }

@@ -14,6 +14,13 @@ class DatabaseMetodos{
         return  Database.Usuarios.filter((user) => 
                  user.email == email)
     }
+    static deletaUsuarioPorId(id){
+        const usuarios = Database.Usuarios.filter((usuario, index) => {
+            return id != index
+        })
+        Database.Usuarios = usuarios
+        return {id: id, success: "usuario excluido com sucesso!"}
+    }
 }
 
 export default DatabaseMetodos;
